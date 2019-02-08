@@ -6,7 +6,7 @@ sudo apt-get update -y &&\
  curl git catkin tmux htop psmisc vim vim-youcompleteme vim-pathogen;
 
 pip install --upgrade pip
-pip install numpy pymavlink
+pip install --user numpy pymavlink
 
 echo "Next: Movidius SDK"
 cd /opt && \
