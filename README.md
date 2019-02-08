@@ -45,6 +45,16 @@ Provide automation scripts for:
   | `ctl-b L` | start logging the active pane |
   | `ctl-b l` | stop logging the active pane |
   
+> Note:
+> I've noticed that the pip install run can be flaky. If you get a message in
+> the log complaining that pip can't find __main__, just re-run it after install (while in the deploy dir):
+> ```bash
+> pip install --user -r requirements.txt
+> ```
+>
+> Likewise, if you attempt to run roscore (or anything ros related) and you're seeing
+> 'not found' errors, run `source /opt/ros/kinetic/setup.bash` for some reason,
+> the .bashrc is being flaky.
 
 ## TODO:
  - System integration scripts (daemonizing ROS, auto-patching, symver for the control software)

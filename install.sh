@@ -1,14 +1,17 @@
 #! /bin/bash
 
 echo "First: some OS basics. . ."
-sudo apt-get update -y && \
- sudo apt-get install -y build-essential python2.7 python-dev python-pip python-opencv \
- curl git catkin tmux htop psmisc vim vim-youcompleteme vim-pathogen;
+sudo apt-get update -y && sudo apt-get upgrade -y && \
+sudo apt-get install -y cmake catkin python2.7 python-dev python-pip python-opencv curl git tmux htop psmisc vim vim-youcompleteme vim-pathogen;
 
-pip install --upgrade pip
+if [ ! -d ~/src ]; then
+  mkdir ~/src
+fi
+cd ~/src
+
+pip install --user --upgrade pip
 pip install --user -r requirements.txt
-
-mkdir ~/src && cd ~/src
+i
 
 echo "Next: Movidius SDK"
 git clone -b ncsdk2 http://github.com/Movidius/ncsdk && cd ncsdk && make install
@@ -26,6 +29,7 @@ mkdir -p ~/catkin_ws/src && \
   catkin_make && \
   cat >> ~/.bashrc <<-EOF
 export EDITOR='vim'
+export PATH=$PATH:/opt/ros/kinetic/bin
 if [ -f /opt/ros/kinetic/setup.bash ]; then
   . /opt/ros/kinetic/setup.bash
 fi
@@ -43,6 +47,7 @@ mkdir -p ~/src/auv && \
 cd ~/src/auv && \
 git clone -b refactor-tyler https://github.com/ksu-auv-team/subdriver2018.git
 git clone https://github.com/ksu-auv-team/movement_package.git
+sudo geographiclib-get-geoids minimal
 
 echo "Experience hacks:"
 # These are using here-docs to populate so that individuals may add in any tweaks for personal prefs at load time.
