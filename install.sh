@@ -8,9 +8,10 @@ sudo apt-get update -y &&\
 pip install --upgrade pip
 pip install --user numpy pymavlink
 
+mkdir ~/src && cd ~/src
+
 echo "Next: Movidius SDK"
-cd /opt && \
-  git clone -b ncsdk2 http://github.com/Movidius/ncsdk && cd ncsdk && make install
+git clone -b ncsdk2 http://github.com/Movidius/ncsdk && cd ncsdk && make install
 
 echo "Next: ROS Kinetic Core Install"
 sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu xenial main" > /etc/apt/sources.list.d/ros-latest.list' && \
@@ -38,9 +39,8 @@ sudo apt-get -y install ros-kinetic-mavlink ros-kinetic-mavros ros-kinetic-mavro
   ros-kinetic-cmake-modules ros-kinetic-control-toolbox  ros-kinetic-joy ros-kinetic-smach
 
 echo "AUV software"
-sudo mkdir -p /opt/auv && \
-cd /opt/auv && \
-sudo chown $USER:$USER /opt/auv && \
+mkdir -p ~/src/auv && \
+cd ~/src/auv && \
 git clone -b refactor-tyler https://github.com/ksu-auv-team/subdriver2018.git
 git clone https://github.com/ksu-auv-team/movement_package.git
 
