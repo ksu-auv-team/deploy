@@ -6,7 +6,7 @@ sudo apt-get update -y &&\
  curl git catkin tmux htop psmisc vim vim-youcompleteme vim-pathogen;
 
 pip install --upgrade pip
-pip install --user numpy pymavlink
+pip install --user -r requirements.txt
 
 mkdir ~/src && cd ~/src
 
