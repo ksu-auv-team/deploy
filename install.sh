@@ -40,6 +40,7 @@ sudo apt-get -y install ros-kinetic-mavlink ros-kinetic-mavros ros-kinetic-mavro
 echo "AUV software"
 sudo mkdir -p /opt/auv && \
 cd /opt/auv && \
+sudo chown $USER:$USER /opt/auv && \
 git clone -b refactor-tyler https://github.com/ksu-auv-team/subdriver2018.git
 git clone https://github.com/ksu-auv-team/movement_package.git
 
