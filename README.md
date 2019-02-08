@@ -37,16 +37,16 @@ Provide automation scripts for:
    > - `|` - pipe, take output left of me and give it to what comes next
    > - `tee install.log` - take the incoming text, and print it to both terminal and a file, install.log - If you have issues installing, this can be shared so we can assist with what broke.
 1. PROFIT!!
-  > There are some useful things here. The [tmux cheat sheet](https://tmuxcheatsheet.com/) is a good start, but the tmux.conf made in the script has a few usibility tweaks:
-  > * mouse mode is ON by default, so clicking will choose panes, and scrolling will look back in buffer history.
+   > There are some useful things here. The [tmux cheat sheet](https://tmuxcheatsheet.com/) is a good start, but the tmux.conf made in the script has a few usibility tweaks:
+   > mouse mode is ON by default, so clicking will choose panes, and scrolling will look back in buffer history.
   
-  | keys | action |
-  | --- | --- |
-  | `ctl-b -` | horizontal split |
-  | `ctl-b \|` | vertical split |
-  | `ctl-b ctl-b` | swap last window |
-  | `ctl-b L` | start logging the active pane |
-  | `ctl-b l` | stop logging the active pane |
+   | keys | action |
+   | --- | --- |
+   | `ctl-b -` | horizontal split |
+   | `ctl-b \|` | vertical split |
+   | `ctl-b ctl-b` | swap last window |
+   | `ctl-b L` | start logging the active pane |
+   | `ctl-b l` | stop logging the active pane |
   
 
 ## TODO:
