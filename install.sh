@@ -1,8 +1,8 @@
 #! /bin/bash
 
 echo "First: some OS basics. . ."
-sudo apt-get update -y &&\
- sudo apt-get install -y build-essential python2.7 python-dev python-pip python-opencv\
+sudo apt-get update -y && \
+ sudo apt-get install -y build-essential python2.7 python-dev python-pip python-opencv \
  curl git catkin tmux htop psmisc vim vim-youcompleteme vim-pathogen;
 
 pip install --upgrade pip
