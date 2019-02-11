@@ -57,13 +57,13 @@ VBoxManage.exe storagectl $VM --name "IDE Controller" --add ide
 VBoxManage.exe storageattach $VM --storagectl "IDE Controller" --port 0 --device 0 --type dvddrive --medium $path\ubuntu-16.04.5-server-amd64.iso
 VBoxManage.exe modifyvm $VM --ioapic on
 VBoxManage.exe modifyvm $VM --boot1 dvd --boot2 disk --boot3 none --boot4 none
-VBoxManage.exe modifyvm $VM --memory 4096 --vram 128
+VBoxManage.exe modifyvm $VM --memory 4096 --vram 256
 VBoxManage.exe modifyvm $VM --uart1 0x3F8 4
 VBoxManage.exe modifyvm $VM --uartmode1 tcpserver 23
 VBoxManage.exe modifyvm $VM --natpf1 "guestssh,tcp,,2222,,22"
 Write-Host 'Done.' -ForegroundColor Green
 Write-Host 'Configuring for Unattended Install and Starting VM.....' -NoNewline
-VBoxManage.exe unattended install $VM --iso=$path\ubuntu-16.04.5-server-amd64.iso --user=auv-dev --full-user-name=auv-dev --password=owlsub --time-zone=EST --script-template=$stored_pwd\ubuntu_preseed.cfg --extra-install-kernel-parameters='vga=normal console=tty0 console=ttyS0,115200n8 auto=true preseed/file=/cdrom/preseed.cfg priority=critical quiet splash noprompt noshell automatic-ubiquity debian-installer/locale=en_US keyboard-configuration/layoutcode=us languagechooser/language-name=English localechooser/supported-locales=en_US.UTF-8 countrychooser/shortlist=US'
+VBoxManage.exe unattended install $VM --iso=$path\ubuntu-16.04.5-server-amd64.iso --user=auv-dev --full-user-name=auv-dev --password=owlsub --time-zone=EST --script-template=$stored_pwd\ubuntu_preseed.cfg --extra-install-kernel-parameters='vga=normal console=ttyS0,115200n8 console=tty0 auto=true preseed/file=/cdrom/preseed.cfg priority=critical noprompt automatic-ubiquity debian-installer/locale=en_US keyboard-configuration/layoutcode=us languagechooser/language-name=English localechooser/supported-locales=en_US.UTF-8 countrychooser/shortlist=US'
 VBoxManage.exe startvm $VM --type=headless
 Write-Host 'Done.' -ForegroundColor Green
 Write-Host 'VM is starting and will install ubuntu automatically.'
