@@ -14,7 +14,8 @@ Provide automation scripts for:
    1. Mac/Win/Linux:
       1. Install Virtual Machine system
          > Oracle's [VirtualBox](https://www.virtualbox.org/ "VirtualBox Homepage") is a good option, and what's referenced here.
-         > Windows: Once installed, Running vbox_deploy.ps1 will auto-create a vm, download and install ubuntu 16.04 server, and load some git repos, leaving you ready to skip to #4 (Run auv_setup.sh).
+         
+         > Windows: Once installed, Running vbox_deploy.ps1 will auto-create a vm, download and install ubuntu 16.04 server, and load some git repos, leaving you ready to skip to #4 (Run `~/src/deploy/auv_setup.sh`).
          > NB: vbox_deploy will setup the VM with
          > - User/Pass: `auv-dev`/`owlsub`
          > - enable local port forwarding at `localhost:2222` (for ssh-ing into the VM, better screen size capabailities than the VBox 'monitor')
