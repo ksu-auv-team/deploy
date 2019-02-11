@@ -14,6 +14,13 @@ Provide automation scripts for:
    1. Mac/Win/Linux:
       1. Install Virtual Machine system
          > Oracle's [VirtualBox](https://www.virtualbox.org/ "VirtualBox Homepage") is a good option, and what's referenced here.
+         
+         > Windows: Once installed, Running vbox_deploy.ps1 will auto-create a vm, download and install ubuntu 16.04 server, and load some git repos, leaving you ready to skip to #4 (Run `~/src/deploy/auv_setup.sh`).
+         > NB: vbox_deploy will setup the VM with
+         > - User/Pass: `auv-dev`/`owlsub`
+         > - enable local port forwarding at `localhost:2222` (for ssh-ing into the VM, better screen size capabailities than the VBox 'monitor')
+         > - headless mode (the VM doesn't have to die if you close the VBox GUI, related to above point)
+         > - auv deploy, subdriver, and movement_package repos already downloaded at `$HOME/src/{deploy,subdriver2018,movement_package}`
       
       1. Download Ubuntu 16.04 ISO:
          * [(64-bit) Server](http://releases.ubuntu.com/xenial/ubuntu-16.04.5-server-amd64.iso) - lighter-weight doesn't have GUI by default, essentially min-config starting point
@@ -27,12 +34,12 @@ Provide automation scripts for:
 1. Clone in this repo: `git clone https://github.com/ksu-auv-team/deploy.git`
    > This should come standard in most installs, after all it's [Linus' baby](https://www.youtube.com/watch?v=4XpnKHJAok8 "Yes, it's dated, but there's some fun irony in this vid").
    > If you get a git not found, `sudo apt-get install git` will fix that for you.
-1. Run install.sh
+1. Run auv_setup.sh
    ```shell
-   deploy/install.sh 2>&1 | tee install.log
+   deploy/auv_setup.sh 2>&1 | tee install.log
    ```
    > This command, broken down: 
-   > - `deploy/install.sh` - run this script.
+   > - `deploy/auv_setup.sh` - run this script.
    > - `2>&1` - write stderr to stdout (merges all output text into a single output stream, it's a linux thing)
    > - `|` - pipe, take output left of me and give it to what comes next
    > - `tee install.log` - take the incoming text, and print it to both terminal and a file, install.log - If you have issues installing, this can be shared so we can assist with what broke.

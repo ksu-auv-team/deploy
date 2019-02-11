@@ -2,16 +2,16 @@
 
 echo "First: some OS basics. . ."
 sudo apt-get update -y && sudo apt-get upgrade -y && \
-sudo apt-get install -y cmake catkin python2.7 python-dev python-pip python-opencv curl git tmux htop psmisc vim vim-youcompleteme vim-pathogen;
+sudo apt-get install -y cmake catkin python2.7 python-dev python-pip python-opencv curl git tmux htop psmisc vim openssh-server vim-pathogen;
 
 if [ ! -d ~/src ]; then
   mkdir ~/src
 fi
 cd ~/src
 
-pip install --user --upgrade pip
-pip install --user -r requirements.txt
-i
+pip install --upgrade pip
+sleep 5 # slight delay due to flaky behavior trying to run pip so soon after updating it.
+pip install --user -r deploy/requirements.txt
 
 echo "Next: Movidius SDK"
 git clone -b ncsdk2 http://github.com/Movidius/ncsdk && cd ncsdk && make install
@@ -26,8 +26,8 @@ sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu xenial main" > /etc/apt
 echo "ROS Environment setup"
 mkdir -p ~/catkin_ws/src && \
   cd ~/catkin_ws/ && \
-  catkin_make && \
-  cat >> ~/.bashrc <<-EOF
+  catkin_make
+cat >> ~/.bashrc <<-EOF
 export EDITOR='vim'
 export PATH=$PATH:/opt/ros/kinetic/bin
 if [ -f /opt/ros/kinetic/setup.bash ]; then
@@ -80,6 +80,7 @@ else
 endif
 color torte
 EOF
+echo "~/.vimrc written"
 # A sensible tmux.conf with some more sensible keybinding for screen-splitting, etc.
 cat > ~/.tmux.conf << EOF
 
@@ -166,3 +167,5 @@ cat > ~/.tmux.conf << EOF
   bind L pipe-pane -o 'cat >>$HOME/#W-tmux.log' \; display-message 'Started logging to $HOME/#W-tmux.log'
   bind l pipe-pane \; display-message 'Ended logging to $HOME/#W-tmux.log'
 EOF
+echo "./tmux.conf written"
+echo "Done."
